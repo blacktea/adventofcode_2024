@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED 20)
 add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
 add_executable(day1 day1.cpp)
+add_executable(day1_part2 day1_part2.cpp)
 
 
 add_custom_command(TARGET day1
