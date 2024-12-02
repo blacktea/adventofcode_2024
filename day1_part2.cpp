@@ -7,11 +7,10 @@ int main(int argc, char* argv[])
 {
     if(argc != 2) {
         std::cerr << "\nUsage:\n"
-        << "The programm requires the path to the file.";
+        << "The program requires the path to the file.";
         return 1;
     }
-    std::string_view filename{argv[1]};
-    std::ifstream ifile(filename.data());
+    std::ifstream ifile(argv[1]);
     if(!ifile) {
         std::cerr << "\nFile cannot be open";
         return 1;
@@ -20,7 +19,6 @@ int main(int argc, char* argv[])
     std::unordered_map<int, int> leftNumToFrequency, rightNumToFrequency; 
 
     int leftNum{}, rightNum{};
-    std::string line;
     while((ifile >> leftNum >> rightNum)) {
         ++rightNumToFrequency[rightNum];
         score += (rightNum * leftNumToFrequency[rightNum]);

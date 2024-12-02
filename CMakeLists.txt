@@ -6,6 +6,7 @@ add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
 add_executable(day1 day1.cpp)
 add_executable(day1_part2 day1_part2.cpp)
+add_executable(day2_part1 day2_part1.cpp)
 
 
 add_custom_command(TARGET day1
