@@ -4,10 +4,15 @@ project(advent2024 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED 20)
 add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
-add_executable(day1 day1.cpp)
-add_executable(day1_part2 day1_part2.cpp)
-add_executable(day2_part1 day2_part1.cpp)
+function(add_challenge name)
+    add_executable(${name} ${name}.cpp)
+    target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR})
+endfunction(add_challenge)
 
+add_challenge(day1)
+add_challenge(day1_part2)
+add_challenge(day2_part1)
+add_challenge(day3)
 
 add_custom_command(TARGET day1
     COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "./data"
