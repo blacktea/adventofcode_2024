@@ -4,13 +4,13 @@
 #include <cmath>
 
 
-struct Equation
+struct Equation final
 {
     int64_t result{};
     std::vector<int64_t> values;
 };
 
-[[nodiscard]] constexpr int64_t cat(int64_t a, int64_t b) {
+[[nodiscard]] constexpr int64_t cat(int64_t a, int64_t b) noexcept {
     const int multiplier = std::pow(10, static_cast<int>(std::log10(b) + 1));
     return a * multiplier + b;
 };
