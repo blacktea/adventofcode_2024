@@ -6,7 +6,7 @@ add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
 function(add_challenge name)
     add_executable(${name} ${CMAKE_CURRENT_SOURCE_DIR}/src/${name}.cpp)
-    target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR})
+    target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR}/include)
 endfunction(add_challenge)
 
 add_challenge(day1)
