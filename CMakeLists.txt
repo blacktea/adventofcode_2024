@@ -20,3 +20,9 @@ add_challenge(day7)
 add_custom_command(TARGET day1
     COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "./data"
 )
+
+find_package(CURL)
+if(CURL_FOUND)
+    add_executable(input_downloader src/utils/input_downloader.cpp)
+    target_link_libraries(input_downloader PRIVATE ${CURL_LIBRARIES})
+endif()
