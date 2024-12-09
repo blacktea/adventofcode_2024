@@ -108,7 +108,7 @@ void printHelp()
 {
     std::cerr << "\nUsage:\n"
     << "The program requires 2 args: (part1, part2) and the path to the file."
-    << "\nFor example, ./day5 part1 data/day5.txt";
+    << "\nFor example, ./day7 part1 data/day7.txt";
 }
 
 int main(int argc, char* argv[])
