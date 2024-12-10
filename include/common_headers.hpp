@@ -1,3 +1,6 @@
+#pragma once
+#include "utils/input_parser.hpp"
+
 #include <algorithm>
 #include <iostream>
 #include <fstream>

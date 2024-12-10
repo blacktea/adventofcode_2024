@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     using namespace std::literals::string_literals;
     const std::string url{"https://adventofcode.com/"s + argv[2] + "/day/" + argv[1] + "/input"};
     std::cerr << "\nurl: " << url;
-    std::string outputFilename{std::string{argv[3]} + "/" + argv[1] + ".txt"};
+    std::string outputFilename{std::string{argv[3]} + "/day" + argv[1] + ".txt"};
     std::string session{"session="};
     if(auto sessionPtr = getenv("AOC_SESSION")) {
         session += sessionPtr;
