@@ -1,4 +1,6 @@
 #include "common_headers.hpp"
+#include "utils/numeric_algorithm.hpp"
+
 #include <sstream>
 #include <limits>
 #include <cmath>
@@ -11,7 +13,7 @@ struct Equation final
 };
 
 [[nodiscard]] constexpr int64_t cat(int64_t a, int64_t b) noexcept {
-    const int multiplier = std::pow(10, static_cast<int>(std::log10(b) + 1));
+    const int multiplier = std::pow(10, numOfDigits(b));
     return a * multiplier + b;
 };
 
