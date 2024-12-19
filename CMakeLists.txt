@@ -7,6 +7,7 @@ add_compile_options(-Wall -Wextra -Wpedantic -O2)
 function(add_challenge name)
     add_executable(${name} ${CMAKE_CURRENT_SOURCE_DIR}/src/${name}.cpp)
     target_include_directories(${name} PRIVATE ${CMAKE_SOURCE_DIR}/include)
+    set_property(TARGET ${name} PROPERTY CXX_STANDARD 20)
 endfunction(add_challenge)
 
 add_challenge(day1)
@@ -23,6 +24,11 @@ add_challenge(day11)
 add_challenge(day12)
 add_challenge(day13)
 add_challenge(day14)
+add_challenge(day15)
+add_challenge(day16)
+add_challenge(day17)
+add_challenge(day18)
+add_challenge(day19)
 
 add_custom_command(TARGET day1
     COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "./data"
