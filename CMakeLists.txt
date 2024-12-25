@@ -30,6 +30,7 @@ add_challenge(day17)
 add_challenge(day18)
 add_challenge(day19)
 add_challenge(day24)
+add_challenge(day25)
 
 add_custom_command(TARGET day1
     COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "./data"
