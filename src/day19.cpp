@@ -104,14 +104,6 @@ int main(int argc, char* argv[])
 
     auto [patterns, designs] = parseInput(inputVec);
 
-    // for(auto p : patterns) {
-    //     std::cerr << "\np `" << p <<"`";
-    // }
-
-    // for(auto s : designs) {
-        // std::cerr << "\n" << s;
-    // }
-
     if(task == "part1") {
         std::cout << solveFirstPart(patterns, designs);
     }

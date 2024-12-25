@@ -1,5 +1,5 @@
 #include "common_headers.hpp"
-#include "Point.hpp"
+#include "Position.hpp"
 #include "utils/input_parser.hpp"
 
 
