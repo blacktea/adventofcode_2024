@@ -1,6 +1,6 @@
 #pragma once
 
-#include <stdint.h>
+#include <cstdint>
 #include <cmath>
 
 [[nodiscard]] constexpr size_t numOfDigits(uint64_t num) noexcept {

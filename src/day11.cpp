@@ -2,6 +2,7 @@
 #include "utils/numeric_algorithm.hpp"
 
 #include <cmath>
+#include <cstdint>
 #include <sstream>
 
 
