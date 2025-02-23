@@ -1,5 +1,8 @@
 #include "common_headers.hpp"
 
+#include <array>
+
+
 /*
 Part 1.
 The task is to count the word `XMAS` horizontally, vertically, diagonally.
