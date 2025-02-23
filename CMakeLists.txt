@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(advent2024 LANGUAGES CXX)
 
+option(DAY7_CONSTEXPR "Enables computing solution at compile-time" OFF)
+
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
@@ -20,6 +22,9 @@ add_challenge(day5)
 ### Day 7
 add_challenge(day7)
 target_compile_options(day7 PRIVATE -fconstexpr-ops-limit=3355443200)
+if(DAY7_CONSTEXPR)
+    target_compile_options(day7 PRIVATE -DDAY7_CONSTEXPR)
+endif()
 
 # Read the content of the input file
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/data/2024/day7.txt FILE_CONTENT)
@@ -32,16 +37,16 @@ file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/data/2024/day7_constexpr.txt ${FILE_CONTE
 
 
 add_challenge(day8)
-add_challenge(day9)
+# add_challenge(day9)
 add_challenge(day10)
 add_challenge(day11)
 add_challenge(day12)
 add_challenge(day13)
 add_challenge(day14)
-add_challenge(day15)
-add_challenge(day16)
-add_challenge(day17)
-add_challenge(day18)
+# add_challenge(day15)
+# add_challenge(day16)
+# add_challenge(day17)
+# add_challenge(day18)
 add_challenge(day19)
 add_challenge(day24)
 add_challenge(day25)

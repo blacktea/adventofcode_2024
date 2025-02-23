@@ -1,7 +1,7 @@
 #include "common_headers.hpp"
 #include "Cursor.hpp"
 
-#include <vector>
+#include <tuple>
 #include <set>
 #include <unordered_set>
 
@@ -150,80 +150,6 @@ template<typename TGraph>
     std::cout << "\nmoves " << moves;
     return unique.size();
 }
-#if 0
-template<typename TGraph>
-[[nodiscard]] size_t solveSecondPart2(TGraph& graph)
-{
-    std::vector<std::set<int>> colObst(graph.size());
-    std::vector<std::set<int>> rowObst(graph[0].size());
-
-    for(int r = 0; r < graph.size(); ++r) {
-        for(int c = 0; c < graph[0].size(); ++c) {
-            if(graph[r][c] == '#') {
-                colObst[c].emplace(r);
-                rowObst[r].emplace(c);
-            } 
-        }
-    }
-
-    constexpr std::array<char, 4> figures{'|', '-', '|', '-'};
-    auto [direction, row, col] = findInitialPosition(graph);
-    graph[row][col] = '.';
-    Cursor cursor{direction, row, col};
-    size_t moves{};
-    while(cursor.x() < graph.size() && cursor.y() < graph[0].size() && cursor.x() >= 0 && cursor.y() >= 0) {
-        const auto curChar{graph[cursor.x()][cursor.y()]};
-        
-        if(curChar == '#') {
-            cursor.stepBack();
-            cursor.turnRight();
-        }
-        else {
-
-            if(curChar != '.') {
-                switch (cursor.direction())
-                {
-                case Cursor::Direction::Right:
-                    if(curChar & Dirs::Down) {
-                        ++moves;
-                        unique.emplace(cursor.x(), cursor.y(), cursor.direction());
-                        std::cerr << "\nhit right: " << cursor.x() << " " << cursor.y();
-                    }
-                    break;
-                case Cursor::Direction::Up:
-                    if(curChar & Dirs::Right) {
-                        ++moves;
-                        unique.emplace(cursor.x(), cursor.y(), cursor.direction());
-
-                        std::cerr << "\nhit up: " << cursor.x() << " " << cursor.y();
-                    }
-                    break;
-                case Cursor::Direction::Down:
-                    if(curChar & Dirs::Left) {
-                        ++moves;
-                        unique.emplace(cursor.x(), cursor.y(), cursor.direction());
-
-                        std::cerr << "\nhit down: " << cursor.x() << " " << cursor.y();
-                    }
-                    break; 
-                case Cursor::Direction::Left:
-                    if(curChar & Dirs::Up) {
-                        ++moves;
-                        unique.emplace(cursor.x(), cursor.y(), cursor.direction());
-
-                        std::cerr << "\nhit left: " << cursor.x() << " " << cursor.y();
-                    }
-                    break;
-                }
-            }
-            
-            cursor.move();
-        }
-    }
-    std::cout << "\nmoves " << moves;
-    return unique.size();
-}
-#endif
 
 void printHelp()
 {
