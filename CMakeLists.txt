@@ -16,16 +16,19 @@ add_challenge(day2_part1)
 add_challenge(day3)
 add_challenge(day4)
 add_challenge(day5)
+
+### Day 7
 add_challenge(day7)
 target_compile_options(day7 PRIVATE -fconstexpr-ops-limit=3355443200)
 
 # Read the content of the input file
-file(READ ${CMAKE_SOURCE_DIR}/data/2024/day7.txt FILE_CONTENT)
+file(READ ${CMAKE_CURRENT_SOURCE_DIR}/data/2024/day7.txt FILE_CONTENT)
 
 # Quote the content
 set(FILE_CONTENT "R\"(${FILE_CONTENT})\"")
 
-file(WRITE ./data/2024/day7_constexpr.txt ${FILE_CONTENT})
+message("${CMAKE_CURRENT_BINARY_DIR}")
+file(WRITE ${CMAKE_CURRENT_SOURCE_DIR}/data/2024/day7_constexpr.txt ${FILE_CONTENT})
 
 
 add_challenge(day8)
@@ -44,7 +47,7 @@ add_challenge(day24)
 add_challenge(day25)
 
 add_custom_command(TARGET day1
-    COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "./data"
+    COMMAND ${CMAKE_COMMAND} -E create_symlink "${CMAKE_CURRENT_SOURCE_DIR}/data" "${CMAKE_CURRENT_BINARY_DIR}/data"
 )
 
 find_package(CURL)

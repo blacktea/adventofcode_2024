@@ -7,10 +7,6 @@
 #include <functional>
 #include <sstream>
 
-constexpr std::string_view gTestDataShort {
-    #include "../data/2024/day7_short.txt"
-};
-
 constexpr std::string_view gInput {
     #include "../data/2024/day7_constexpr.txt"
 };
