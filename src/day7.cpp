@@ -259,6 +259,8 @@ int main(int argc, char* argv[])
         << " elapsed " << std::chrono::duration_cast<std::chrono::milliseconds>(end-start).count();
     }
     else if(task == "part1_constexpr") {
+        
+    #if defined(DAY7_CONSTEXPR)
         const auto constexpr_context = [] {
             constexpr size_t N{numOfEquastions(gInput)};
             std::array<Equation, N> equations{};
@@ -266,7 +268,6 @@ int main(int argc, char* argv[])
 
             return equations;
         };
-
         constexpr auto equations{constexpr_context()};
         constexpr auto firstPartAns{solveFirstPart(equations)};
         std::cout << firstPartAns;
@@ -274,6 +275,9 @@ int main(int argc, char* argv[])
         // TODO: solving second part takes a lot of time and consumes lots of memory.
         // constexpr auto secondPartAns{solveSecondPart(equations)};
         // std::cout << "\n" << secondPartAns;
+    #else
+        std::cout << "\ndisabled. DAY7_CONSTEXPR compile variable should be defined";
+    #endif
     }
     else {
         std::cerr << "\nfirst arg can be either `part1`, `part2`, or `part1_constexpr`\n";
