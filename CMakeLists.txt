@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 project(advent2024 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD_REQUIRED 20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_compile_options(-Wall -Wextra -Wpedantic -O2)
 
 function(add_challenge name)
@@ -17,6 +17,17 @@ add_challenge(day3)
 add_challenge(day4)
 add_challenge(day5)
 add_challenge(day7)
+target_compile_options(day7 PRIVATE -fconstexpr-ops-limit=3355443200)
+
+# Read the content of the input file
+file(READ ${CMAKE_SOURCE_DIR}/data/2024/day7.txt FILE_CONTENT)
+
+# Quote the content
+set(FILE_CONTENT "R\"(${FILE_CONTENT})\"")
+
+file(WRITE ./data/2024/day7_constexpr.txt ${FILE_CONTENT})
+
+
 add_challenge(day8)
 add_challenge(day9)
 add_challenge(day10)
