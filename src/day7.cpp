@@ -24,25 +24,12 @@ template<typename T>
 concept IsEquation = std::is_same_v<T, Equation>;
 
 template<typename T>
-concept EquationArrayContainer = requires(T a)
+concept EquationArray = requires(T a)
 {
-    requires IsEquation<std::iter_value_t<decltype(std::begin(a))>>;
-    requires std::forward_iterator<decltype(std::begin(a))>;
-    requires std::forward_iterator<decltype(std::end(a))>;
+    requires IsEquation<std::iter_value_t<decltype(std::begin(std::declval<T&>()))>>;
+    requires std::forward_iterator<decltype(std::begin(std::declval<T&>()))>;
+    requires std::forward_iterator<decltype(std::end(std::declval<T&>()))>;
 };
-
-template<typename T>
-concept EquationPointerArray = std::is_pointer_v<T> && IsEquation<std::remove_pointer_t<T>>;
-
-template<typename T>
-concept EquationBoundedArray = std::is_bounded_array_v<T> && requires(T a)
-{
-    requires IsEquation<std::remove_cvref_t<decltype(a[0])>>;
-};
-
-template<typename T>
-concept EquationArray = EquationArrayContainer<T> || EquationPointerArray<T> || EquationBoundedArray<T>;
-
 
 // TODO: replace the function with std::from_chairs, that becomes constexpr in C++23.
 [[nodiscard]] constexpr std::pair<int64_t, size_t> parseNumber(std::string_view str) noexcept {
