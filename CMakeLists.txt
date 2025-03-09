@@ -14,10 +14,11 @@ endfunction(add_challenge)
 
 add_challenge(day1)
 add_challenge(day1_part2)
-add_challenge(day2_part1)
+add_challenge(day2)
 add_challenge(day3)
 add_challenge(day4)
 add_challenge(day5)
+add_challenge(day6)
 
 ### Day 7
 add_challenge(day7)
