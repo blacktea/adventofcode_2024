@@ -58,6 +58,20 @@ add_custom_command(TARGET day1
 
 find_package(CURL)
 if(CURL_FOUND)
-    add_executable(input_downloader src/utils/input_downloader.cpp)
-    target_link_libraries(input_downloader PRIVATE ${CURL_LIBRARIES})
+
+    set(UCORO_HDRS 
+        "${CMAKE_CURRENT_SOURCE_DIR}/include/ucoro/coro.hpp")
+    add_library(ucoro INTERFACE ${UCORO_HDRS})
+    target_include_directories(ucoro INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+    target_compile_options(ucoro INTERFACE -fcoroutines)
+
+    if(UNIX)
+        add_executable(input_downloader src/utils/input_downloader_coro.cpp)
+        target_link_libraries(input_downloader PRIVATE ${CURL_LIBRARIES} ucoro)
+        set_property(TARGET input_downloader PROPERTY CXX_STANDARD 20)
+    endif()
+    
+    # An example to use CURL in an async mode
+    add_executable(non_blocking_curl src/utils/non_blocking_curl.cpp)
+    target_link_libraries(non_blocking_curl PRIVATE ${CURL_LIBRARIES})
 endif()
